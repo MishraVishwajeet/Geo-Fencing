@@ -1,0 +1,37 @@
+<header class="jumbotron">
+	<h1 class="text-center">Change Password</h1>
+</header>
+<section class="center-block">
+	  <label *ngIf="eMsg" class="alert alert-danger">
+    {{eMsg}}
+  </label>
+  <form method="post" [formGroup]="myForm" (submit)="Check(myForm.value)">
+  	<div class="form-group">
+      <label>Old Password</label>
+      <input type="password" class="form-control" formControlName="oldpass"/>
+      <div *ngIf="!myForm.controls['oldpass'].valid && myForm.controls['oldpass'].touched">
+        Old Password is Required
+      </div>
+    </div>
+    <div [formGroup]="passwordFormGroup">
+    <div class="form-group">
+      <label>New Password</label>
+      <input type="password" class="form-control" formControlName="newpass"/>
+      <div *ngIf="!passwordFormGroup.controls['newpass'].valid && passwordFormGroup.controls['newpass'].touched">
+       New Password is Required
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" class="form-control" formControlName="cnfpass"/>
+      <div *ngIf="!passwordFormGroup.controls['cnfpass'].valid && passwordFormGroup.controls['cnfpass'].touched">
+        Confirm Password is Required
+      </div>
+      <div class="bg-danger" *ngIf="passwordFormGroup.doesMatchPassword">Password does not match</div>
+    </div>
+</div>
+<div class="form-group">
+        <button class="form-control btn btn-primary" type="submit" [disabled]="!myForm.valid" >Submit</button>
+    </div>
+</form>
+</section>

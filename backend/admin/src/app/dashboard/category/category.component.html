@@ -1,0 +1,24 @@
+<h2>Devices</h2>
+<table class="table">
+	<tr>
+		<td colspan=5 class="text-center">
+			<a routerLink="/dashboard/category/addcat" class="btn btn-success">Add Devices</a></td>
+	</tr>
+	<tr>
+		<th>S.No</th>
+		<th>Device</th>
+<!-- 		<th>Image</th>
+ -->		<th>Date</th>
+		<th>Action</th>
+	</tr>
+	<tr *ngFor="let c of catData;let i=index">
+		<th>{{i+1}}</th>
+		<th>{{c.cname}}</th>
+		<!-- <th><img src="http://localhost:8888/static/{{c.image}}" width=50 height=50/></th> -->
+		<th>{{c.time|date}}</th>
+		<th>
+			<a class="btn btn-info">ON/OFF</a>
+			<!-- <a class="btn btn-danger" (click)="delCat(c._id)">delete</a> -->
+		</th>
+	</tr>
+</table>

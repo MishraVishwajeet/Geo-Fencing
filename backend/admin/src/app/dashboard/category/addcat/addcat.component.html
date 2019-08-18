@@ -1,0 +1,18 @@
+<h2>Add Device</h2>
+<form method="post" [formGroup] ="myForm" (submit)="addCat(myForm.value)">
+	<table class="table">
+		<tr>
+			<td>Device</td>
+			<td><input type="text" class="form-control" formControlName="cname"></td>
+		</tr>
+		<!-- <tr>
+			<td>Image</td>
+			<td><input type="file" class="form-control"  (change)="myImage($event)"></td>
+		</tr> -->
+		<tr>
+			<td colsapn="2">
+				<input type="submit" value="submit" class="btn btn-success">
+			</td>
+		</tr>
+	</table>
+</form>
