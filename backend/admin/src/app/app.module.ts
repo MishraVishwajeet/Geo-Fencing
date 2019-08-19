@@ -16,6 +16,7 @@ import {AuthGuard} from './guards/auth.guard';
 import { AddcatComponent } from './dashboard/category/addcat/addcat.component';
 import{ CategoryService } from './services/category.service';
 import { MyformValidator } from './dashboard/changepass/Myform.validator';
+import { PhoneNoComponent } from './dashboard/category/phone-no/phone-no.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { MyformValidator } from './dashboard/changepass/Myform.validator';
     CategoryComponent,
     NewsComponent,
     ChangepassComponent,
-    AddcatComponent
+    AddcatComponent,
+    PhoneNoComponent
   ],
   imports: [
     BrowserModule,RoutingModule,ReactiveFormsModule,HttpClientModule,StorageServiceModule

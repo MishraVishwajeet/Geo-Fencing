@@ -2,6 +2,7 @@ import { Component, OnInit,NgZone } from '@angular/core';
 import { FormGroup,Validators,FormBuilder} from '@angular/forms';
 import { CategoryService} from '../../../services/category.service';
 import {Router} from  '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-addcat',
   templateUrl: './addcat.component.html',
@@ -11,7 +12,9 @@ export class AddcatComponent implements OnInit {
 	myForm:FormGroup;
   iImage;
   cname;
-  constructor(private fb:FormBuilder,private ser:CategoryService,private router:Router,private ngZone: NgZone) {
+  ndata;
+  natData;
+  constructor(private route: ActivatedRoute,private fb:FormBuilder,private ser:CategoryService,private router:Router,private ngZone: NgZone) {
   this.myForm=fb.group(
   	{
   		'cname':['',Validators.required],
@@ -22,24 +25,32 @@ export class AddcatComponent implements OnInit {
   ngOnInit() {
 
   }
-  addCat(data){
+  addNews(data){
     let formdata=new FormData();
      formdata.append('cname',data.cname)
-     formdata.append('image',this.iImage)
-  		this.ser.addCat(formdata)
-  		.subscribe(res=>{
-  		})
-      this.ser.fetchCat();
-      this.ser.fetchCat();
-      this.ser.fetchCat();
-      this.ser.fetchCat();
-      this.router.navigate(['/dashboard/category']);
-      this.ser.fetchCat();
-      this.ser.fetchCat();
-      this.ser.fetchCat();
-      this.ser.fetchCat();
+     //formdata.append('image',this.iImage)
+     //formdata.append('titl',data.titl)
+     //formdata.append('des',data.des)
+      this.ser.addNews(formdata)
+      .subscribe(res=>{
+      })
+      this.router.navigate(['/dashboard/news']);
+      console.log("hello");
+      this.fetchNews();
+      this.fetchNews();
+      this.fetchNews();
   }
-      
+   fetchNews(){
+    this.ser.fetchNews() 
+    .subscribe(res=>
+    {
+      console.log(res);
+      this.ndata=res;
+      if(this.ndata.status==200){
+        this.natData=this.ndata.nData;
+      }
+    })
+  }   
   myImage(event)
   {
     //if(event.target.files && event.target.files>0){

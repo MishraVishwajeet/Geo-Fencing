@@ -16,7 +16,7 @@ children:[
     {path:'category',component:CategoryComponent},
     {path:'news',component:NewsComponent},
     {path:'changepass',component:ChangepassComponent},
-    {path:'category/addcat',component:AddcatComponent}
+    {path:'category/addcat/:id',component:AddcatComponent}
           ]}
 ];
 @NgModule({

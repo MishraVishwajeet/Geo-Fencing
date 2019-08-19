@@ -1,9 +1,9 @@
 <h2>Devices</h2>
 <table class="table">
-	<tr>
+	<!-- <tr>
 		<td colspan=5 class="text-center">
 			<a routerLink="/dashboard/category/addcat" class="btn btn-success">Add Devices</a></td>
-	</tr>
+	</tr> -->
 	<tr>
 		<th>S.No</th>
 		<th>Device</th>
@@ -11,14 +11,14 @@
  -->		<th>Date</th>
 		<th>Action</th>
 	</tr>
-	<tr *ngFor="let c of catData;let i=index">
+	<tr *ngFor="let c of x;let i=index">
 		<th>{{i+1}}</th>
-		<th>{{c.cname}}</th>
+		<th>{{c.devName}}</th>
 		<!-- <th><img src="http://localhost:8888/static/{{c.image}}" width=50 height=50/></th> -->
-		<th>{{c.time|date}}</th>
+		<th>{{c.timeStamp | date:'MM-dd-yyyy'}}</th>
 		<th>
-			<a class="btn btn-info">ON/OFF</a>
-			<!-- <a class="btn btn-danger" (click)="delCat(c._id)">delete</a> -->
+			<a class="btn btn-info" (click)="addcat(c.devName)">Edit</a>
+			 <a class="btn btn-danger" (click)="delCat(c.devName)">OFF</a> 
 		</th>
 	</tr>
 </table>
