@@ -13,7 +13,8 @@ export class AddcatComponent implements OnInit {
   iImage;
   cname;
   ndata;
-  natData;
+  natData; x=[];
+  co;
   constructor(private route: ActivatedRoute,private fb:FormBuilder,private ser:CategoryService,private router:Router,private ngZone: NgZone) {
   this.myForm=fb.group(
   	{
@@ -23,7 +24,7 @@ export class AddcatComponent implements OnInit {
   )
  }
   ngOnInit() {
-
+    this.fetchNews();
   }
   addNews(data){
     let formdata=new FormData();
@@ -41,14 +42,22 @@ export class AddcatComponent implements OnInit {
       this.fetchNews();
   }
    fetchNews(){
+   let co=this.route.snapshot.paramMap.get('id');
+  console.log(co);
     this.ser.fetchNews() 
     .subscribe(res=>
     {
-      console.log(res);
+      //console.log(res);
       this.ndata=res;
       if(this.ndata.status==200){
-        this.natData=this.ndata.nData;
+        this.natData=this.ndata.cData.devices[co].contactList;
+        console.log(this.natData);
       }
+      for(var idx in this.natData) {
+          var item = this.natData[idx];
+          this.x.push(item);
+          console.log("hii");
+          console.log(item);
     })
   }   
   myImage(event)

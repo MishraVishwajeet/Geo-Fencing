@@ -2,12 +2,8 @@
 <form method="post" [formGroup] ="myForm" (submit)="addNews(myForm.value)">
 	<table class="table">
 		<tr>
-			<td>Phone No.</td>
-			<td><select class="form-control" formControlName="cname">  
-                           <option >-----Select AnyOne-------</option>  
-                        <option *ngFor="let c of catData">{{c.cname}}  
-                     </option>  
-                </select></td>
+			<td>Phone No:</td>
+			<td><input type="text" class="form-control" formControlName="titl"></td>
 		</tr>
 	
 		<tr>
@@ -27,9 +23,9 @@
 		<!-- <th>Title</th> -->
 		<!-- <th>Description</th> -->
 	</tr>
-	<tr *ngFor="let n of natData;let i=index">
+	<tr *ngFor="let n of x;let i=index">
 		<th>{{i+1}}</th>
-		<th>{{n.pno}}</th>
+		<th>{{n}}</th>
 		<!-- <th><img src="http://localhost:8888/static/{{n.image}}" width=50 height=50/></th> -->
 		<!-- <th>{{n.time|date}}</th> -->
 		<!-- <th>{{n.title}}</th> -->
